@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Create Account</h2>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="number" id="age" placeholder="Age">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="signup()">SIGN UP</button>
+    <a href="signin.html">Already have an account? Sign in</a>
+  </div>
+
+  <!-- Signup music -->
+  <audio id="signupMusic" src="signup.mp3" autoplay loop></audio>
+
+  <script>
+    function signup() {
+      let name = document.getElementById("name").value;
+      let age = document.getElementById("age").value;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      if(name && age && email && password){
+        // Save user data
+        localStorage.setItem("user", JSON.stringify({name, age, email, password}));
+
+        // Stop music before redirect
+        const music = document.getElementById("signupMusic");
+        music.pause();
+        music.currentTime = 0;
+
+        alert("Signup successful! Please login.");
+        window.location.href = "signin.html";
+      } else {
+        alert("Please fill all fields.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+

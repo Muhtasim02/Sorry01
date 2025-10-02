@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Welcome 🎉</h2>
+    <p id="userinfo"></p>
+    <button onclick="logout()">LOGOUT</button>
+  </div>
+
+  <script>
+    let user = JSON.parse(localStorage.getItem("user"));
+    if(user){
+      document.getElementById("userinfo").innerText = 
+        `Hello ${user.name}, you are ${user.age} years old.`;
+    } else {
+      window.location.href = "signin.html";
+    }
+
+    function logout(){
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

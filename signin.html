@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Welcome Back</h2>
+    <input type="text" id="email" placeholder="Email or ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="signin()">SIGN IN</button>
+    <a href="signup.html">Don’t have an account? Sign up</a>
+  </div>
+
+  <script>
+    function signin() {
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let user = JSON.parse(localStorage.getItem("user"));
+
+      // Special account: MOHO
+      if(email === "MOHO" && password === "2006"){
+        alert("Welcome MOHO!");
+        window.location.href = "moho.html"; 
+        return;
+      }
+
+      // Normal login (from signup)
+      if(user && email === user.email && password === user.password){
+        alert("Login successful!");
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid email or password.");
+      }
+      window.addEventListener("beforeunload", () => {
+    localStorage.removeItem("MOHO"); });
+    }
+  </script>
+</body>
+</html>

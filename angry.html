@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Angry Page</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    margin: 0;
+    animation: shake 0.5s infinite alternate;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
+
+  /* Simple shake animation to express anger */
+  @keyframes shake {
+    0% { transform: translateX(0px); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(5px); }
+  }
+</style>
+</head>
+<body>
+
+<h1>RAG KORE E THAK</h1>
+<p>Baccha</p>
+
+<!-- Continue moho.mp3 -->
+<audio id="mohoMusic" src="moho.mp3" autoplay loop></audio>
+
+<script>
+window.addEventListener("load", () => {
+    const music = document.getElementById("mohoMusic");
+    const savedTime = localStorage.getItem("mohoMusicTime");
+
+    if(savedTime) {
+        music.currentTime = savedTime;
+    }
+    music.play();
+});
+</script>
+
+</body>
+</html>

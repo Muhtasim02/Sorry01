@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get Started</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Get Started</h2>
+    <p>Sign up or sign in to continue</p>
+    <a href="signup.html"><button>SIGN UP</button></a>
+    <a href="signin.html"><button>SIGN IN</button></a>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" src="Web.mp3" autoplay loop></audio>
+
+  <script>
+    const music = document.getElementById("bg-music");
+
+    // Some browsers block autoplay until user interacts
+    document.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+      }
+    });
+
+    // Stop music when leaving the page
+    window.addEventListener("beforeunload", () => {
+      music.pause();
+      music.currentTime = 0;
+    });
+  </script>
+</body>
+</html>
+
+
