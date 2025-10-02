@@ -14,14 +14,20 @@
     <a href="signup.html">Don’t have an account? Sign up</a>
   </div>
 
+  <!-- Play signup.mp3 on this page too -->
+  <audio id="signinMusic" src="signup.mp3" autoplay loop></audio>
+
   <script>
     function signin() {
       let email = document.getElementById("email").value;
       let password = document.getElementById("password").value;
       let user = JSON.parse(localStorage.getItem("user"));
+      const music = document.getElementById("signinMusic");
 
       // Special account: MOHO
       if(email === "MOHO" && password === "2006"){
+        music.pause();
+        music.currentTime = 0;
         alert("Welcome MOHO!");
         window.location.href = "moho.html"; 
         return;
@@ -29,14 +35,16 @@
 
       // Normal login (from signup)
       if(user && email === user.email && password === user.password){
+        music.pause();
+        music.currentTime = 0;
         alert("Login successful!");
         window.location.href = "home.html";
       } else {
         alert("Invalid email or password.");
       }
-      window.addEventListener("beforeunload", () => {
-    localStorage.removeItem("MOHO"); });
     }
   </script>
 </body>
 </html>
+
+
